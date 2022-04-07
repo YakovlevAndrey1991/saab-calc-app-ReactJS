@@ -1,14 +1,13 @@
 import React, {Component} from "react";
 import Options from "./Options/Options";
-import './selects.css'
 
-export default class SelectTemperature extends Component {
+export default class SelectVolume extends Component {
 
     render() {
 
-        const {selectTemperature, onChangeSelect} = this.props
+        const {selectVolume, onChangeSelect} = this.props
 
-        const selectsTemp = selectTemperature.map((item) => {
+        const selectsVolume = selectVolume.map((item) => {
             const {id, ...itemProps} = item
 
             return (
@@ -23,8 +22,8 @@ export default class SelectTemperature extends Component {
             <>
                 <div className="selects">
                     <p>Выберите датчик</p>
-                    <select onChange={onChangeSelect('tempTransmitter')}>
-                        {selectsTemp}
+                    <select onChange={onChangeSelect('pressureTransmitter')}>
+                        {selectsVolume}
                     </select>
                 </div>
             </>

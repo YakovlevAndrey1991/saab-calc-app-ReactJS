@@ -15,7 +15,20 @@ export default class Inputs extends Component {
             placeholder: 'Введите температуру',
             id: "currentTemperature",
             value: null
-        }
+        },
+        {
+            description: 'Введите давление',
+            placeholder: 'Введите давление',
+            id: "currentPressure",
+            value: null
+        },
+        {
+            description: 'Введите объем',
+            placeholder: 'Введите объем',
+            id: "currentVolume",
+            value: null
+        },
+
     ]
 
     render() {

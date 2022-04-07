@@ -8,9 +8,13 @@ export default class App extends Component {
     state = {
         levelTransmitter: null,
         tempTransmitter: null,
+        pressureTransmitter: null,
+        volumeTransmitter: null,
 
         level: null,
         temp: null,
+        pressure: null,
+        volume: null,
 
         res: null,
         tempRes: null,
@@ -28,6 +32,16 @@ export default class App extends Component {
                     temp: e.target.value
                 })
                 break
+            case 'currentPressure':
+                this.setState({
+                    pressure: e.target.value
+                })
+                break
+            case 'currentVolume':
+                this.setState({
+                    volume: e.target.value
+                })
+                break
         }
     }
 
@@ -42,8 +56,20 @@ export default class App extends Component {
                 this.setState({
                     tempTransmitter: e.target.value
                 })
+                break
+            case 'pressureTransmitter':
+                this.setState({
+                    pressureTransmitter: e.target.value
+                })
+                break
+            case 'volumeTransmitter':
+                this.setState({
+                    volumeTransmitter: e.target.value
+                })
+                break
         }
     }
+
 
     onCalc = () => {
         if (this.state.levelTransmitter && this.state.level) {

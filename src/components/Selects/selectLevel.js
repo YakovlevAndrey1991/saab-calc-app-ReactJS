@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import Options from "../Options";
+import Options from "./Options/Options";
 import './selects.css'
 
 export default class SelectLevel extends Component {
@@ -15,7 +15,6 @@ export default class SelectLevel extends Component {
                 <Options key={id}
                          {...itemProps}
                 />
-
             )
         })
 
