@@ -1,0 +1,33 @@
+.main {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.selects {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+.inputs {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+.buttons {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+.buttons button {
+    margin-top: 52px
+}
+.results {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+.results span {
+    width: 25px;
+    height: 25px;
+}
