@@ -51,17 +51,17 @@ export default class Selects extends Component {
         },
         {
             label: '3051S Ultra for Flow',
-            value: 5,
+            value: 0.04,
             id: 10
         },
         {
             label: '3051S Ultra',
-            value: 10,
+            value: 0.025,
             id: 11
         },
         {
             label: '3051S Classic',
-            value: 15,
+            value: 0.035,
             id: 12
         },
 

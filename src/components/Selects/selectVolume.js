@@ -21,8 +21,8 @@ export default class SelectVolume extends Component {
         return (
             <>
                 <div className="selects">
-                    <p>Выберите датчик</p>
-                    <select onChange={onChangeSelect('pressureTransmitter')}>
+                    <p>Выберите таблицу</p>
+                    <select onChange={onChangeSelect('volumeTransmitter')}>
                         {selectsVolume}
                     </select>
                 </div>

@@ -14,11 +14,17 @@ export default class App extends Component {
         level: null,
         temp: null,
         pressure: null,
+        density: null,
         volume: null,
+        weight: null,
 
-        res: null,
-        tempRes: null,
+        levelAccuracy: null,
+        tempAccuracy: null,
+        pressureAccuracy: null,
+        densityAccuracy: null,
+        weightAccuracy: null
     }
+
 
     onInputValue = (id) => (e) => {
         switch (id) {
@@ -72,21 +78,63 @@ export default class App extends Component {
 
 
     onCalc = () => {
-        if (this.state.levelTransmitter && this.state.level) {
+
+        const {levelTransmitter, level, temp, tempTransmitter, pressureTransmitter, pressure, volume} = this.state
+
+        let levelAccuracy = (100 / (level / levelTransmitter)).toFixed(4)
+        let tempAccuracy = (100 / (temp / tempTransmitter)).toFixed(4)
+        let density = (1.21 + ((pressure / (level * 9.81) )* 1000)).toFixed(4)
+        let weight = (+density * +volume).toFixed(4)
+        const weightAccuracy = 0.5
+        let densityAccuracy = ((+density / 100) * ((+levelAccuracy + (+pressureTransmitter)))).toFixed(4)
+
+
+        this.setState({
+            weightAccuracy
+        })
+
+        if (levelTransmitter && level) {
+            this.setState({levelAccuracy})
+        } else {
             this.setState({
-                res: +this.state.levelTransmitter / +this.state.level
+                levelAccuracy: 'Ошибка!'
+            })
+        }
+        if (temp && tempTransmitter) {
+            this.setState({tempAccuracy})
+        } else {
+            this.setState({
+                tempAccuracy: 'Ошибка!'
+            })
+        }
+        if (level && pressure) {
+            this.setState({density})
+        } else {
+            this.setState({
+                density: 'Ошибка!'
+            })
+        }
+        if (density && levelAccuracy && pressureTransmitter) {
+            this.setState({
+                densityAccuracy
+            })
+
+        } else {
+            this.setState({
+                densityAccuracy: 'Ошибка!'
+            })
+        }
+
+        if (density && volume) {
+            this.setState({
+                weight
             })
         } else {
             this.setState({
-                res: 'Ошибка!'
+                weight: 'Ошибка!'
             })
         }
-    }
 
-    onCalcTemp = () => {
-        this.setState({
-            tempRes: +this.state.tempTransmitter * +this.state.temp
-        })
     }
 
     render() {
@@ -98,10 +146,13 @@ export default class App extends Component {
                         onChangeSelect={this.onChangeSelect}
 
                         onCalc={this.onCalc}
-                        onCalcTemp={this.onCalcTemp}
 
-                        res={this.state.res}
-                        tempRes={this.state.tempRes}
+                        levelAccuracy={this.state.levelAccuracy}
+                        tempAccuracy={this.state.tempAccuracy}
+                        density={this.state.density}
+                        densityAccuracy={this.state.densityAccuracy}
+                        weight={this.state.weight}
+                        weightAccuracy={this.state.weightAccuracy}
                     />
                 </header>
             </div>
